@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">To Do Application</string>
+    <string name="todo_header">My to-do tasks</string>
+    <string name="add_todo">Add todo</string>
+    <string name="hint_add_todo">Enter new to-do task</string>
+    <string name="add_todo_btn">Add to-do</string>
+    <string name="example_todo">Example to-do</string>
+    <string name="swipe_to_delete">Swipe right to delete</string>
+    <string name="swipe_to_edit">Swipe left to edit</string>
+</resources>
