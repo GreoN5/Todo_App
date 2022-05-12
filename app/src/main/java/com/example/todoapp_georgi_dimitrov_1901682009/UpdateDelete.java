@@ -30,8 +30,8 @@ public class UpdateDelete extends ItemTouchHelper.SimpleCallback {
             AlertDialog.Builder builder = new AlertDialog.Builder(this._adapter.getContext());
             builder.setTitle("Delete to-do?");
             builder.setMessage("Are you sure you want to do this action?");
-            builder.setPositiveButton("Yes", (dialog, which) -> _adapter.deleteTask(position));
-            builder.setNegativeButton("No", (dialog, which) -> _adapter.notifyItemChanged(position));
+            builder.setPositiveButton("Yes", (dialog, which) -> this._adapter.deleteTask(position));
+            builder.setNegativeButton("No", (dialog, which) -> this._adapter.notifyItemChanged(position));
 
             AlertDialog dialog = builder.create();
             dialog.show();

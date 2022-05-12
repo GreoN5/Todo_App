@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements OnDialogCloseList
     protected RecyclerView view;
     protected FloatingActionButton btnNew;
     protected List<ToDoModel> list;
-    private ToDoAdapter adapter;
+    private ToDoAdapter _adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,20 +34,20 @@ public class MainActivity extends AppCompatActivity implements OnDialogCloseList
         btnNew = findViewById(R.id.add_todo);
         context = new DbContext(MainActivity.this);
         list = new ArrayList<>();
-        adapter = new ToDoAdapter(context, MainActivity.this);
+        this._adapter = new ToDoAdapter(context, MainActivity.this);
 
         view.setHasFixedSize(true);
         view.setLayoutManager(new LinearLayoutManager(this));
-        view.setAdapter(adapter);
+        view.setAdapter(this._adapter);
 
         list = context.getAllTasks();
         System.out.println(list);
         Collections.reverse(list);
-        adapter.setTasks(list);
+        this._adapter.setTasks(list);
 
         btnNew.setOnClickListener(v -> AddNewTodo.newInstance().show(getSupportFragmentManager(), AddNewTodo.TAG));
 
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new UpdateDelete(this.adapter));
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new UpdateDelete(this._adapter));
         itemTouchHelper.attachToRecyclerView(view);
     }
 
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements OnDialogCloseList
     public void onDialogClose(DialogInterface dialogInterface) {
         this.list = this.context.getAllTasks();
         Collections.reverse(this.list);
-        adapter.setTasks(this.list);
-        adapter.notifyDataSetChanged();
+        this._adapter.setTasks(this.list);
+        this._adapter.notifyDataSetChanged();
     }
 }

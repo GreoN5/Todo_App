@@ -39,9 +39,9 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         final ToDoModel item = this._list.get(position);
-        holder.mCheckBox.setText(item.getName());
-        holder.mCheckBox.setChecked(toBoolean(item.getIsDone()));
-        holder.mCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+        holder.checkBox.setText(item.getName());
+        holder.checkBox.setChecked(toBoolean(item.getIsDone()));
+        holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
                 _db.makeToDoDone(item.getId());
             } else {
@@ -90,10 +90,10 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        CheckBox mCheckBox;
+        CheckBox checkBox;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            mCheckBox = itemView.findViewById(R.id.checkbox);
+            checkBox = itemView.findViewById(R.id.checkbox);
         }
     }
 }
